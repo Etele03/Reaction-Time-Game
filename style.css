@@ -1,0 +1,13 @@
+:root{
+    --ink-black: #03191E;
+    --burgundy: #941C2F;
+    --neon-ice: #59F8E8;
+    --blue-bell: #20A4F3;
+    --pale-sky: #C1CFDA;
+}
+
+body{
+    background-color: var(--pale-sky);
+}
+
+
