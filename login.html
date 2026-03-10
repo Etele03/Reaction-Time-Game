@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bejelentkezés | Reflex Teszt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Reflex<span class="text-pale">App</span></a>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Vissza a főoldalra</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-page">
+        <div class="form-container">
+            <h2>Lépj be a <span class="text-blue">fiókodba</span></h2>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">E-mail cím</label>
+                    <input type="email" id="email" placeholder="pelda@email.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Jelszó</label>
+                    <input type="password" id="password" placeholder="Adja meg a jelszavát" required>
+                </div>
+
+                <div id="error-message" class="error-text"></div>
+
+                <button type="submit" class="btn btn-primary btn-full">Bejelentkezés</button>
+            </form>
+
+            <p class="form-footer">
+                Nincs még fiókod? <a href="register.html" class="text-neon">Regisztrálj!</a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ReflexApp. Projektmunka.</p>
+    </footer>
+
+    <script src="login.js" defer></script>
+</body>
+</html>
