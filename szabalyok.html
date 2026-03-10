@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szabályok | Reflex Teszt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Reflex<span class="text-pale">App</span></a>
+        <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Főoldal</a></li>
+                <li><a href="szabalyok.html" class="active">Szabályok</a></li>
+                <li><a href="login.html" class="login-btn">Bejelentkezés</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-page">
+        <div class="content-card">
+            <h2>Hogyan <span class="text-blue">játssz?</span></h2>
+            <div class="rules-text">
+                <h3>🎯 A játék célja</h3>
+                <p>Mérd meg a reakcióidődet milliszekundum pontossággal! Figyeld a képernyőt, és reagálj a felvillanó vizuális ingerekre a lehető leggyorsabban.</p>
+                <h3>🎮 Irányítás (Billentyűzet)</h3>
+                <p>A legpontosabb mérés érdekében a játékot kizárólag billentyűzettel lehet irányítani:</p>
+                <ul>
+                    <li>Amikor a játéktér hirtelen <strong>zöldre</strong> vált, nyomd meg a <strong>SZÓKÖZ (Space)</strong> gombot amilyen gyorsan csak tudod!</li>
+                    <li>A teszt 5 körből áll, a rendszer a végén átlagolja a reakcióidődet.</li>
+                </ul>
+                <h3>⚠️ Pontozás és Büntetések</h3>
+                <ul>
+                    <li>A ranglistán a <strong>legkisebb idő (ms)</strong> nyer. Minél gyorsabb vagy, annál feljebb kerülsz!</li>
+                    <li><strong>Túl korai kattintás:</strong> Ha megnyomod a gombot, mielőtt a zöld jelzés megjelenne, a kísérlet érvénytelen lesz és újraindul a kör.</li>
+                    <li><strong>Hibás gombnyomás:</strong> Ha másik gombot nyomsz meg a Szóköz helyett, időbüntetést kapsz.</li>
+                </ul>
+            </div>
+            <div class="rules-footer">
+                <a href="register.html" class="btn btn-primary">Készen állok, Indítás!</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ReflexApp. Projektmunka.</p>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -25,7 +25,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Biztosítjuk, hogy SOHA ne legyen pont a listaelemek előtt */
 li {
     list-style-type: none;
 }
@@ -39,7 +38,6 @@ li {
    1. MOBIL NÉZET (Alapértelmezett stílusok, up to 767px)
    ========================================================= */
 
-/* --- Fejléc --- */
 header {
     display: flex;
     justify-content: space-between;
@@ -58,7 +56,6 @@ header {
     text-transform: uppercase;
 }
 
-/* --- Hamburger Ikon --- */
 .hamburger {
     display: flex;
     flex-direction: column;
@@ -89,7 +86,6 @@ header {
     background-color: var(--blue-bell);
 }
 
-/* --- Navigációs konténer --- */
 nav {
     position: absolute; 
     top: 100%; 
@@ -98,19 +94,16 @@ nav {
     z-index: 90;
 }
 
-/* --- Lenyíló menü (Dropdown) --- */
 .nav-links {
     width: 100%;
     background-color: #010D10;
     border-bottom: 2px solid var(--blue-bell);
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
-    
     display: flex; 
     flex-direction: column;
     align-items: center;
     gap: 2rem;
     padding: 2rem 0;
-    
     transform: translateY(-15px);
     opacity: 0;
     visibility: hidden;
@@ -123,23 +116,60 @@ nav {
     visibility: visible;
 }
 
+/* --- LINK STÍLUSOK (Hover és Aktív effektek) --- */
 .nav-links a {
     color: var(--pale-sky);
     text-decoration: none;
     font-weight: 500;
     font-size: 1.2rem;
     transition: all 0.3s ease;
+    position: relative; /* Szükséges az animált vonalhoz */
 }
 
-/* Kiemelt link (Bejelentkezés) keret nélkül, más színnel */
+/* Animált alsó vonal (alapból láthatatlan / 0 széles) */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--blue-bell);
+    box-shadow: 0 0 8px var(--blue-bell);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* Ha ráviszed az egeret, a vonal kihúzódik 100%-ra */
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Az aktív oldal linkje (Amin épp állsz) */
+.nav-links a.active {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(89, 248, 232, 0.4);
+}
+
+/* Az aktív link alatti vonal folyamatosan 100% és neon színű */
+.nav-links a.active::after {
+    width: 100%;
+    background-color: var(--neon-ice);
+    box-shadow: 0 0 10px var(--neon-ice);
+}
+
+/* A bejelentkezés gomb egyedi, neki nem kell az alsó vonal */
 .nav-links .login-btn {
     color: var(--neon-ice);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+.nav-links .login-btn::after {
+    display: none;
+}
 
-/* --- Főoldal (Hero Section) --- */
+/* --- TARTALMI RÉSZEK --- */
 main {
     flex: 1;
     display: flex;
@@ -171,7 +201,6 @@ p.subtitle {
     max-width: 300px;
 }
 
-/* --- Gombok --- */
 .btn {
     padding: 1rem 2rem;
     font-size: 1rem;
@@ -203,7 +232,6 @@ p.subtitle {
     width: 100%;
 }
 
-/* --- Formok / Regisztráció és Login --- */
 .form-page {
     justify-content: flex-start;
     padding-top: 2rem;
@@ -271,7 +299,60 @@ p.subtitle {
     font-weight: bold;
 }
 
-/* --- Lábléc --- */
+/* --- Szöveges oldalak (Szabályok, Info) --- */
+.content-page {
+    justify-content: flex-start;
+    padding-top: 2rem;
+}
+
+.content-card {
+    width: 100%;
+    max-width: 100%;
+    background-color: var(--ink-black);
+    padding: 2rem 1rem;
+    text-align: left;
+}
+
+.content-card h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.rules-text h3 {
+    color: var(--neon-ice);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.rules-text p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.rules-text ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.rules-text ul li {
+    list-style-type: disc;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+    color: var(--pale-sky);
+}
+
+.rules-text strong {
+    color: #ffffff;
+}
+
+.rules-footer {
+    margin-top: 3rem;
+    text-align: center;
+}
+
 footer {
     text-align: center;
     padding: 2rem;
@@ -283,19 +364,9 @@ footer {
    2. TABLET ÉS DESKTOP NÉZET (Min-width: 768px)
    ========================================================= */
 @media screen and (min-width: 768px) {
-    
-    header {
-        padding: 2rem 5%;
-    }
-
-    .hamburger {
-        display: none;
-    }
-
-    nav {
-        position: static; 
-        width: auto;
-    }
+    header { padding: 2rem 5%; }
+    .hamburger { display: none; }
+    nav { position: static; width: auto; }
 
     .nav-links {
         position: static;
@@ -305,39 +376,19 @@ footer {
         background-color: transparent;
         border: none;
         box-shadow: none;
-        
         display: flex; 
         flex-direction: row;
         gap: 2.5rem;
         padding: 0;
     }
 
-    .nav-links a {
-        font-size: 1rem;
-    }
+    .nav-links a { font-size: 1rem; }
+    h1 { font-size: 4rem; }
+    p.subtitle { font-size: 1.2rem; max-width: 600px; }
+    .cta-container { flex-direction: row; justify-content: center; max-width: none; }
+    .form-page, .content-page { justify-content: center; padding-top: 0; }
 
-    h1 {
-        font-size: 4rem;
-    }
-
-    p.subtitle {
-        font-size: 1.2rem;
-        max-width: 600px;
-    }
-
-    .cta-container {
-        flex-direction: row;
-        justify-content: center;
-        max-width: none;
-    }
-
-    .form-page {
-        justify-content: center;
-        padding-top: 0;
-    }
-
-    .form-container {
-        max-width: 450px;
+    .form-container, .content-card {
         background-color: rgba(193, 207, 218, 0.03);
         border: 1px solid rgba(89, 248, 232, 0.1);
         border-radius: 12px;
@@ -345,10 +396,12 @@ footer {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
-    .nav-links a:hover {
-        color: var(--blue-bell);
-    }
+    .form-container { max-width: 450px; }
+    .content-card { max-width: 700px; }
 
+    .nav-links a:hover { color: #ffffff; }
+
+    /* Asztali bejelentkezés gomb hover (mivel nincs vonala) */
     .nav-links .login-btn:hover {
         color: #ffffff;
         text-shadow: 0 0 10px var(--neon-ice); 
