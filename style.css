@@ -25,6 +25,10 @@ body {
     overflow-x: hidden;
 }
 
+body.game-body {
+    overflow: hidden;
+}
+
 li {
     list-style-type: none;
 }
@@ -116,17 +120,15 @@ nav {
     visibility: visible;
 }
 
-/* --- LINK STÍLUSOK (Hover és Aktív effektek) --- */
 .nav-links a {
     color: var(--pale-sky);
     text-decoration: none;
     font-weight: 500;
     font-size: 1.2rem;
     transition: all 0.3s ease;
-    position: relative; /* Szükséges az animált vonalhoz */
+    position: relative; 
 }
 
-/* Animált alsó vonal (alapból láthatatlan / 0 széles) */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -140,25 +142,21 @@ nav {
     transition: width 0.3s ease;
 }
 
-/* Ha ráviszed az egeret, a vonal kihúzódik 100%-ra */
 .nav-links a:hover::after {
     width: 100%;
 }
 
-/* Az aktív oldal linkje (Amin épp állsz) */
 .nav-links a.active {
     color: #ffffff;
     text-shadow: 0 0 8px rgba(89, 248, 232, 0.4);
 }
 
-/* Az aktív link alatti vonal folyamatosan 100% és neon színű */
 .nav-links a.active::after {
     width: 100%;
     background-color: var(--neon-ice);
     box-shadow: 0 0 10px var(--neon-ice);
 }
 
-/* A bejelentkezés gomb egyedi, neki nem kell az alsó vonal */
 .nav-links .login-btn {
     color: var(--neon-ice);
     font-weight: 700;
@@ -169,7 +167,6 @@ nav {
     display: none;
 }
 
-/* --- TARTALMI RÉSZEK --- */
 main {
     flex: 1;
     display: flex;
@@ -232,22 +229,23 @@ p.subtitle {
     width: 100%;
 }
 
-.form-page {
+.form-page, .content-page {
     justify-content: flex-start;
     padding-top: 2rem;
 }
 
-.form-container {
+.form-container, .content-card {
     width: 100%;
     max-width: 100%;
     background-color: var(--ink-black);
     padding: 2rem 1rem;
 }
 
-.form-container h2 {
+.form-container h2, .content-card h2 {
     color: #ffffff;
     font-size: 2rem;
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 .input-group {
@@ -299,27 +297,6 @@ p.subtitle {
     font-weight: bold;
 }
 
-/* --- Szöveges oldalak (Szabályok, Info) --- */
-.content-page {
-    justify-content: flex-start;
-    padding-top: 2rem;
-}
-
-.content-card {
-    width: 100%;
-    max-width: 100%;
-    background-color: var(--ink-black);
-    padding: 2rem 1rem;
-    text-align: left;
-}
-
-.content-card h2 {
-    color: #ffffff;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
 .rules-text h3 {
     color: var(--neon-ice);
     margin-top: 2rem;
@@ -330,11 +307,13 @@ p.subtitle {
 .rules-text p {
     line-height: 1.6;
     margin-bottom: 1rem;
+    text-align: left;
 }
 
 .rules-text ul {
     margin-left: 1.5rem;
     margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .rules-text ul li {
@@ -342,10 +321,6 @@ p.subtitle {
     margin-bottom: 0.8rem;
     line-height: 1.5;
     color: var(--pale-sky);
-}
-
-.rules-text strong {
-    color: #ffffff;
 }
 
 .rules-footer {
@@ -361,7 +336,60 @@ footer {
 }
 
 /* =========================================================
-   2. TABLET ÉS DESKTOP NÉZET (Min-width: 768px)
+   2. JÁTÉKTÉR (Kifejezetten a game.html-hez)
+   ========================================================= */
+
+.game-container {
+    padding: 0; 
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-area {
+    flex: 1; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; 
+    user-select: none; 
+    transition: background-color 0.1s; 
+    padding: 2rem;
+}
+
+/* Kisebb, letisztultabb betűméretek a játéktéren */
+.game-area h1 {
+    font-size: clamp(2rem, 6vw, 4.5rem); 
+    pointer-events: none; 
+    margin-bottom: 0.5rem;
+}
+
+.game-area p {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    pointer-events: none;
+    opacity: 0.8; /* Finomabb megjelenés az alcímnek */
+}
+
+.bg-idle {
+    background-color: var(--ink-black);
+    color: var(--pale-sky);
+}
+
+.bg-waiting {
+    background-color: var(--burgundy);
+    color: #ffffff;
+}
+
+.bg-go {
+    background-color: #00FF7F; 
+    color: var(--ink-black); 
+}
+
+/* =========================================================
+   3. TABLET ÉS DESKTOP NÉZET (Min-width: 768px)
    ========================================================= */
 @media screen and (min-width: 768px) {
     header { padding: 2rem 5%; }
@@ -401,7 +429,6 @@ footer {
 
     .nav-links a:hover { color: #ffffff; }
 
-    /* Asztali bejelentkezés gomb hover (mivel nincs vonala) */
     .nav-links .login-btn:hover {
         color: #ffffff;
         text-shadow: 0 0 10px var(--neon-ice); 
