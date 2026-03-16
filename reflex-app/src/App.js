@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+
+// Ezeket később csináljuk meg:
+// import Game from './pages/Game';
+// import Login from './pages/Login';
+// import Register from './pages/Register';
+// import Rules from './pages/Rules';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* Ide jön majd a többi oldal útvonala */}
+      </Routes>
+      
+      <footer>
+        <p>&copy; 2026 ReflexApp. Projektmunka.</p>
+      </footer>
+    </Router>
   );
 }
 
